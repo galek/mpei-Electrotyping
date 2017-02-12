@@ -20,7 +20,11 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             Compute comp = new Compute();
-            comp.ComputeAction(this.chart1);
+            comp.ComputeAction(this.chart1, Convert.ToDouble(this.xlimit.Text), Convert.ToDouble(this.ylimit.Text), Convert.ToDouble(this.dVal.Text), Convert.ToDouble(this.hVal.Text),
+            Convert.ToDouble(this.r0.Text), Convert.ToDouble(this.u0.Text),
+            Convert.ToDouble(this.b.Text), Convert.ToDouble(this.a.Text),
+            Convert.ToDouble(this.ks1.Text), Convert.ToDouble(this.ks2.Text), Convert.ToDouble(this.kf.Text)
+            );
         }
     }
 }

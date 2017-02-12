@@ -2,3 +2,4 @@ obj/
 *.manifest
 *.config
 *.exe
+*.pdb
