@@ -22,6 +22,13 @@ namespace WindowsFormsApplication1
         double r0, double u0, double b, double a,
         double ks1, double ks2, double kf)
         {
+            // Очищаем график
+            if (_chart.Series != null)
+            {
+                _chart.Series[0].Points.Clear();
+                _chart.Refresh();
+            }
+
             double[] arrD = new double[System.Int16.MaxValue];//655360
             double c1, c2, c3, c4;
 
