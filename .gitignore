@@ -3,3 +3,5 @@ obj/
 *.config
 *.exe
 *.pdb
+*.suo
+*.sln
