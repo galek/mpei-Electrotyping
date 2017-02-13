@@ -54,10 +54,10 @@ namespace WindowsFormsApplication1
             int k = 1;
             arrD[k] = d;
 
-            _chart.ChartAreas[0].AxisX.Title = "x=f(t)";
-            _chart.ChartAreas[0].AxisY.Title = "y=d";
+            _chart.ChartAreas[0].AxisX.Title = "Время электролиза";//"x=f(t) Временной промежуток";
+            _chart.ChartAreas[0].AxisY.Title = "Размер ГП";//y=d 
 
-            Console.Write("T " + t.ToString() + " D " + d.ToString());
+            Console.WriteLine("T " + t.ToString() + " D " + d.ToString());
 
             do
             {
