@@ -6,6 +6,9 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Compute comp = new Compute();
+        /// <summary>
+        /// Muller used for slider, because default slider works only with integer
+        /// </summary>
         const double MULLER = 1000.0;
 
         public Form1()
@@ -21,12 +24,12 @@ namespace WindowsFormsApplication1
         }
         private void _ComputeAction(bool _showMessage)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.xlimit, true) || _CheckEditBoxOnNumbersOnly(this.ylimit, true) ||
-               _CheckEditBoxOnNumbersOnly(this.dVal, true) || _CheckEditBoxOnNumbersOnly(this.hVal, true) ||
-               _CheckEditBoxOnNumbersOnly(this.r0, true) || _CheckEditBoxOnNumbersOnly(this.u0, true) ||
-               _CheckEditBoxOnNumbersOnly(this.b, true) || _CheckEditBoxOnNumbersOnly(this.a, true) ||
-               _CheckEditBoxOnNumbersOnly(this.ks1, true) || _CheckEditBoxOnNumbersOnly(this.ks2, true)
-               || _CheckEditBoxOnNumbersOnly(this.kf, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.xlimit, true) || Tools._CheckEditBoxOnNumbersOnly(this.ylimit, true) ||
+               Tools._CheckEditBoxOnNumbersOnly(this.dVal, true) || Tools._CheckEditBoxOnNumbersOnly(this.hVal, true) ||
+              Tools._CheckEditBoxOnNumbersOnly(this.r0, true) || Tools._CheckEditBoxOnNumbersOnly(this.u0, true) ||
+               Tools._CheckEditBoxOnNumbersOnly(this.b, true) || Tools._CheckEditBoxOnNumbersOnly(this.a, true) ||
+               Tools._CheckEditBoxOnNumbersOnly(this.ks1, true) || Tools._CheckEditBoxOnNumbersOnly(this.ks2, true)
+               || Tools._CheckEditBoxOnNumbersOnly(this.kf, true))
             {
                 // debug only
                 //{
@@ -43,67 +46,20 @@ namespace WindowsFormsApplication1
             Convert.ToDouble(this.ks1.Text), Convert.ToDouble(this.ks2.Text), Convert.ToDouble(this.kf.Text));
         }
 
-
-
-        /// <summary>
-        /// Функция которая меня цвет заливки поля - полезно для отладки. 
-        /// </summary>
-        /// <param name="tb">Textbox for changing of BackColor</param>
-        /// <param name="_valid">Selection of color</param>
-        private void _ChangeColorEditBox(System.Windows.Forms.TextBox tb, bool _valid)
-        {
-            if (_valid)
-            {
-                tb.BackColor = System.Drawing.Color.White;
-            }
-            else
-            {
-                tb.BackColor = System.Drawing.Color.Red;
-            }
-        }
-
-        private bool _CheckEditBoxOnNumbersOnly(System.Windows.Forms.TextBox tb, bool _resetOnCorrect)
-        {
-            try
-            {
-                double temp = Convert.ToDouble(tb.Text);
-            }
-            catch (Exception)
-            {
-                // debug only
-                //{
-                //    MessageBox.Show("Please provide number only");
-                //}
-
-                _ChangeColorEditBox(tb, false);
-                return true;
-            }
-
-            if (string.IsNullOrEmpty(tb.Text))
-            {
-                _ChangeColorEditBox(tb, false);
-                return true;
-            }
-
-            if (_resetOnCorrect)
-                _ChangeColorEditBox(tb, true);
-            return false;
-        }
-
         private void ylimit_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.ylimit, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.ylimit, true))
             {
                 return;
             }
 
-            _ChangeColorEditBox(this.ylimit, true);
+            Tools._ChangeColorEditBox(this.ylimit, true);
 
             var value = Convert.ToInt32(Convert.ToDouble(this.ylimit.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
                 //MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.ylimit, false);
+                Tools._ChangeColorEditBox(this.ylimit, false);
                 return;
             }
 
@@ -112,18 +68,18 @@ namespace WindowsFormsApplication1
 
         private void xlimit_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.xlimit, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.xlimit, true))
             {
                 return;
             }
 
-            _ChangeColorEditBox(this.xlimit, true);
+            Tools._ChangeColorEditBox(this.xlimit, true);
 
             var value = Convert.ToInt32(Convert.ToDouble(this.xlimit.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
-               // MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.xlimit, false);
+                // MessageBox.Show("Данное значение должно быть больше 0");
+                Tools._ChangeColorEditBox(this.xlimit, false);
                 return;
             }
 
@@ -154,7 +110,7 @@ namespace WindowsFormsApplication1
 
         private void r0_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.r0, false))
             {
                 MessageBox.Show("Пустое поле R0-введите его, что бы осуществить перерасчет");
                 return;
@@ -163,7 +119,7 @@ namespace WindowsFormsApplication1
 
         private void u0_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.u0, false))
             {
                 MessageBox.Show("Пустое поле u0-введите его, что бы осуществить перерасчет");
                 return;
@@ -173,13 +129,13 @@ namespace WindowsFormsApplication1
 
         private void r0_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.r0, true))
             {
                 MessageBox.Show("Не прошли проверку r0_TextChanged");
                 return;
             }
 
-            _ChangeColorEditBox(this.r0, true);
+            Tools._ChangeColorEditBox(this.r0, true);
 
             if (r0.Focused)
             {
@@ -195,7 +151,7 @@ namespace WindowsFormsApplication1
                     if (IsInValidValue(value, this.r0_trackBar2, this.r0))
                         return;
 
-                    _CheckEditBoxOnNumbersOnly(this.r0, true);
+                    Tools._CheckEditBoxOnNumbersOnly(this.r0, true);
                     this.r0_trackBar2.Value = Convert.ToInt32(value);
                 }
             }
@@ -205,13 +161,13 @@ namespace WindowsFormsApplication1
 
         private void u0_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.u0, true))
             {
                 MessageBox.Show("Не прошли проверку r0_TextChanged");
                 return;
             }
 
-            _ChangeColorEditBox(this.u0, true);
+            Tools._ChangeColorEditBox(this.u0, true);
 
             if (u0.Focused)
             {
@@ -227,7 +183,7 @@ namespace WindowsFormsApplication1
                     if (IsInValidValue(value, this.u0_trackBar1, this.u0))
                         return;
 
-                    _CheckEditBoxOnNumbersOnly(this.u0, true);
+                    Tools._CheckEditBoxOnNumbersOnly(this.u0, true);
                     this.u0_trackBar1.Value = Convert.ToInt32(value);
                 }
             }
@@ -238,16 +194,16 @@ namespace WindowsFormsApplication1
 
         private void hVal_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.hVal, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.hVal, true))
             {
                 return;
             }
 
             var value = Convert.ToInt32(Convert.ToDouble(this.hVal.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
-               // MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.hVal, false);
+                // MessageBox.Show("Данное значение должно быть больше 0");
+                Tools._ChangeColorEditBox(this.hVal, false);
                 return;
             }
 
@@ -258,45 +214,45 @@ namespace WindowsFormsApplication1
         {
             if (value > _track.Maximum)
             {
-                _ChangeColorEditBox(tb, false);
+                Tools._ChangeColorEditBox(tb, false);
                 return true;
             }
             if (value < _track.Minimum)
             {
-                _ChangeColorEditBox(tb, false);
+                Tools._ChangeColorEditBox(tb, false);
                 return true;
             }
 
-            _ChangeColorEditBox(tb, true);
+            Tools._ChangeColorEditBox(tb, true);
             return false;
         }
 
         private void hVal_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.hVal, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.hVal, false))
             {
                 MessageBox.Show("Пустое поле u0-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.hVal, false);
+                Tools._ChangeColorEditBox(this.hVal, false);
                 return;
             }
         }
 
         private void xlimit_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.xlimit, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.xlimit, false))
             {
                 MessageBox.Show("Пустое поле xlimit-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.xlimit, false);
+                Tools._ChangeColorEditBox(this.xlimit, false);
                 return;
             }
         }
 
         private void ylimit_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.ylimit, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.ylimit, false))
             {
                 MessageBox.Show("Пустое поле ylimit-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.ylimit, false);
+                Tools._ChangeColorEditBox(this.ylimit, false);
                 return;
             }
         }
@@ -310,16 +266,16 @@ namespace WindowsFormsApplication1
 
         private void u0_min_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0_min, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.u0_min, true))
             {
                 return;
             }
 
             var value = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
                 MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.u0_min, false);
+                Tools._ChangeColorEditBox(this.u0_min, false);
                 return;
             }
 
@@ -329,33 +285,33 @@ namespace WindowsFormsApplication1
 
         private void u0_min_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0_min, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.u0_min, false))
             {
                 MessageBox.Show("Пустое поле u0_min-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.u0_min, false);
+                Tools._ChangeColorEditBox(this.u0_min, false);
                 return;
             }
             var value = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
                 //MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.u0_min, false);
+                Tools._ChangeColorEditBox(this.u0_min, false);
                 return;
             }
         }
 
         private void u0_max_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0_max, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.u0_max, true))
             {
                 return;
             }
 
             var value = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
                 //MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.u0_max, false);
+                Tools._ChangeColorEditBox(this.u0_max, false);
                 return;
             }
 
@@ -365,26 +321,26 @@ namespace WindowsFormsApplication1
 
         private void u0_max_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0_max, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.u0_max, false))
             {
                 MessageBox.Show("Пустое поле u0_max-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.u0_max, false);
+                Tools._ChangeColorEditBox(this.u0_max, false);
                 return;
             }
         }
 
         private void r0_max_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0_max, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.r0_max, true))
             {
                 return;
             }
 
             var value = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
                 //MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.r0_max, false);
+                Tools._ChangeColorEditBox(this.r0_max, false);
                 return;
             }
 
@@ -393,36 +349,28 @@ namespace WindowsFormsApplication1
             this._UpdateValuesLimitsAndCompute(true);
         }
 
-        private bool _BiggerThanZero(int _v)
-        {
-            if (_v < 0)
-                return false;
-
-            return true;
-        }
-
         private void r0_max_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0_max, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.r0_max, false))
             {
                 MessageBox.Show("Пустое поле r0_max-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.r0_max, false);
+                Tools._ChangeColorEditBox(this.r0_max, false);
                 return;
             }
         }
 
         private void r0_min_TextChanged(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0_min, true))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.r0_min, true))
             {
                 return;
             }
 
             var value = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text) * MULLER);
-            if (!_BiggerThanZero(value))
+            if (!Tools._BiggerThanZero(value))
             {
                 MessageBox.Show("Данное значение должно быть больше 0");
-                _ChangeColorEditBox(this.r0_min, false);
+                Tools._ChangeColorEditBox(this.r0_min, false);
                 return;
             }
 
@@ -431,10 +379,10 @@ namespace WindowsFormsApplication1
 
         private void r0_min_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0_min, false))
+            if (Tools._CheckEditBoxOnNumbersOnly(this.r0_min, false))
             {
                 MessageBox.Show("Пустое поле r0_min-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.r0_min, false);
+                Tools._ChangeColorEditBox(this.r0_min, false);
                 return;
             }
         }
