@@ -405,6 +405,13 @@ namespace WindowsFormsApplication1
 
             man.SwitchToWorkMode();
             _ApplyState(man.GetScenario(0));
+            this._ShowHideEduMode(false);
+        }
+
+        private void _ShowHideEduMode(bool _state)
+        {
+            this.Selector_Datas_desc.Visible = _state;
+            this.Selector_Datas_sel.Visible = _state;
         }
 
         private void _ApplyState(Descriptor _desc)
@@ -432,6 +439,7 @@ namespace WindowsFormsApplication1
 
             man.SwitchToEduMode();
             _ApplyState(man.GetScenario(0));
+            _ShowHideEduMode(true);
         }
     }
 }

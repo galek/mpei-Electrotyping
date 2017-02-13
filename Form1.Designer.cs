@@ -78,6 +78,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.EduMode_B = new System.Windows.Forms.RadioButton();
             this.WorkMode_B = new System.Windows.Forms.RadioButton();
+            this.Selector_Datas_sel = new System.Windows.Forms.ComboBox();
+            this.Selector_Datas_desc = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,6 +141,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.Selector_Datas_desc);
+            this.tabPage1.Controls.Add(this.Selector_Datas_sel);
             this.tabPage1.Controls.Add(this.WorkMode_B);
             this.tabPage1.Controls.Add(this.EduMode_B);
             this.tabPage1.Controls.Add(this.r0_max);
@@ -552,11 +556,10 @@
             // EduMode_B
             // 
             this.EduMode_B.AutoSize = true;
-            this.EduMode_B.Location = new System.Drawing.Point(820, 174);
+            this.EduMode_B.Location = new System.Drawing.Point(820, 213);
             this.EduMode_B.Name = "EduMode_B";
             this.EduMode_B.Size = new System.Drawing.Size(109, 17);
             this.EduMode_B.TabIndex = 47;
-            this.EduMode_B.TabStop = true;
             this.EduMode_B.Text = "Режим обучения";
             this.EduMode_B.UseVisualStyleBackColor = true;
             this.EduMode_B.CheckedChanged += new System.EventHandler(this.EduMode_B_CheckedChanged);
@@ -564,7 +567,8 @@
             // WorkMode_B
             // 
             this.WorkMode_B.AutoSize = true;
-            this.WorkMode_B.Location = new System.Drawing.Point(820, 209);
+            this.WorkMode_B.Checked = true;
+            this.WorkMode_B.Location = new System.Drawing.Point(820, 172);
             this.WorkMode_B.Name = "WorkMode_B";
             this.WorkMode_B.Size = new System.Drawing.Size(100, 17);
             this.WorkMode_B.TabIndex = 48;
@@ -572,6 +576,25 @@
             this.WorkMode_B.Text = "Режим работы";
             this.WorkMode_B.UseVisualStyleBackColor = true;
             this.WorkMode_B.CheckedChanged += new System.EventHandler(this.WorkMode_B_CheckedChanged);
+            // 
+            // Selector_Datas_sel
+            // 
+            this.Selector_Datas_sel.FormattingEnabled = true;
+            this.Selector_Datas_sel.Location = new System.Drawing.Point(691, 209);
+            this.Selector_Datas_sel.Name = "Selector_Datas_sel";
+            this.Selector_Datas_sel.Size = new System.Drawing.Size(100, 21);
+            this.Selector_Datas_sel.TabIndex = 49;
+            this.Selector_Datas_sel.Visible = false;
+            // 
+            // Selector_Datas_desc
+            // 
+            this.Selector_Datas_desc.AutoSize = true;
+            this.Selector_Datas_desc.Location = new System.Drawing.Point(493, 217);
+            this.Selector_Datas_desc.Name = "Selector_Datas_desc";
+            this.Selector_Datas_desc.Size = new System.Drawing.Size(129, 13);
+            this.Selector_Datas_desc.TabIndex = 50;
+            this.Selector_Datas_desc.Text = "Набор тестовых данных";
+            this.Selector_Datas_desc.Visible = false;
             // 
             // Form1
             // 
@@ -643,6 +666,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.RadioButton WorkMode_B;
         private System.Windows.Forms.RadioButton EduMode_B;
+        private System.Windows.Forms.Label Selector_Datas_desc;
+        private System.Windows.Forms.ComboBox Selector_Datas_sel;
     }
 }
 
