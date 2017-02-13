@@ -26,7 +26,8 @@ namespace WindowsFormsApplication1
             if (_chart.Series != null)
             {
                 _chart.Series[0].Points.Clear();
-                _chart.Refresh();
+                // с закомментированным вариантом - рисует быстрее
+                //_chart.Refresh();
             }
 
             double[] arrD = new double[System.Int16.MaxValue];//655360
