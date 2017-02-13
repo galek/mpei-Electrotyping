@@ -420,6 +420,11 @@ namespace WindowsFormsApplication1
                 this.EduMode_YouMustGetV.Visible = _state;
                 this.EduMode_YouMustGetLV.Visible = _state;
             }
+            {                
+                this.EduMode_CurV.Visible = _state;
+                this.EduMode_CurL.Visible = _state;
+                this.EduMode_CurLV.Visible = _state;
+            }
         }
 
         private void _ApplyState(Descriptor _desc)

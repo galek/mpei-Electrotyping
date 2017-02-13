@@ -38,6 +38,13 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.EduMode_YouMustGetV = new System.Windows.Forms.Label();
+            this.EduMode_YouMustGetLV = new System.Windows.Forms.Label();
+            this.EduMode_YouMustGetL = new System.Windows.Forms.Label();
+            this.Selector_Datas_desc = new System.Windows.Forms.Label();
+            this.Selector_Datas_sel = new System.Windows.Forms.ComboBox();
+            this.WorkMode_B = new System.Windows.Forms.RadioButton();
+            this.EduMode_B = new System.Windows.Forms.RadioButton();
             this.r0_max = new System.Windows.Forms.TextBox();
             this.r0_min = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -76,13 +83,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
-            this.EduMode_B = new System.Windows.Forms.RadioButton();
-            this.WorkMode_B = new System.Windows.Forms.RadioButton();
-            this.Selector_Datas_sel = new System.Windows.Forms.ComboBox();
-            this.Selector_Datas_desc = new System.Windows.Forms.Label();
-            this.EduMode_YouMustGetL = new System.Windows.Forms.Label();
-            this.EduMode_YouMustGetLV = new System.Windows.Forms.Label();
-            this.EduMode_YouMustGetV = new System.Windows.Forms.Label();
+            this.EduMode_CurV = new System.Windows.Forms.Label();
+            this.EduMode_CurLV = new System.Windows.Forms.Label();
+            this.EduMode_CurL = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -144,6 +147,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.EduMode_CurV);
+            this.tabPage1.Controls.Add(this.EduMode_CurLV);
+            this.tabPage1.Controls.Add(this.EduMode_CurL);
             this.tabPage1.Controls.Add(this.EduMode_YouMustGetV);
             this.tabPage1.Controls.Add(this.EduMode_YouMustGetLV);
             this.tabPage1.Controls.Add(this.EduMode_YouMustGetL);
@@ -196,6 +202,80 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Модель";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // EduMode_YouMustGetV
+            // 
+            this.EduMode_YouMustGetV.AutoSize = true;
+            this.EduMode_YouMustGetV.Location = new System.Drawing.Point(783, 221);
+            this.EduMode_YouMustGetV.Name = "EduMode_YouMustGetV";
+            this.EduMode_YouMustGetV.Size = new System.Drawing.Size(21, 13);
+            this.EduMode_YouMustGetV.TabIndex = 53;
+            this.EduMode_YouMustGetV.Text = "нм";
+            this.EduMode_YouMustGetV.Visible = false;
+            // 
+            // EduMode_YouMustGetLV
+            // 
+            this.EduMode_YouMustGetLV.AutoSize = true;
+            this.EduMode_YouMustGetLV.Location = new System.Drawing.Point(688, 221);
+            this.EduMode_YouMustGetLV.Name = "EduMode_YouMustGetLV";
+            this.EduMode_YouMustGetLV.Size = new System.Drawing.Size(13, 13);
+            this.EduMode_YouMustGetLV.TabIndex = 52;
+            this.EduMode_YouMustGetLV.Text = "0";
+            this.EduMode_YouMustGetLV.Visible = false;
+            // 
+            // EduMode_YouMustGetL
+            // 
+            this.EduMode_YouMustGetL.AutoSize = true;
+            this.EduMode_YouMustGetL.Location = new System.Drawing.Point(493, 221);
+            this.EduMode_YouMustGetL.Name = "EduMode_YouMustGetL";
+            this.EduMode_YouMustGetL.Size = new System.Drawing.Size(146, 13);
+            this.EduMode_YouMustGetL.TabIndex = 51;
+            this.EduMode_YouMustGetL.Text = "Вам необходимо получить: ";
+            this.EduMode_YouMustGetL.Visible = false;
+            // 
+            // Selector_Datas_desc
+            // 
+            this.Selector_Datas_desc.AutoSize = true;
+            this.Selector_Datas_desc.Location = new System.Drawing.Point(493, 197);
+            this.Selector_Datas_desc.Name = "Selector_Datas_desc";
+            this.Selector_Datas_desc.Size = new System.Drawing.Size(129, 13);
+            this.Selector_Datas_desc.TabIndex = 50;
+            this.Selector_Datas_desc.Text = "Набор тестовых данных";
+            this.Selector_Datas_desc.Visible = false;
+            // 
+            // Selector_Datas_sel
+            // 
+            this.Selector_Datas_sel.FormattingEnabled = true;
+            this.Selector_Datas_sel.Location = new System.Drawing.Point(691, 189);
+            this.Selector_Datas_sel.Name = "Selector_Datas_sel";
+            this.Selector_Datas_sel.Size = new System.Drawing.Size(100, 21);
+            this.Selector_Datas_sel.TabIndex = 49;
+            this.Selector_Datas_sel.Visible = false;
+            this.Selector_Datas_sel.SelectedIndexChanged += new System.EventHandler(this.Selector_Datas_sel_SelectedIndexChanged);
+            // 
+            // WorkMode_B
+            // 
+            this.WorkMode_B.AutoSize = true;
+            this.WorkMode_B.Checked = true;
+            this.WorkMode_B.Location = new System.Drawing.Point(820, 172);
+            this.WorkMode_B.Name = "WorkMode_B";
+            this.WorkMode_B.Size = new System.Drawing.Size(100, 17);
+            this.WorkMode_B.TabIndex = 48;
+            this.WorkMode_B.TabStop = true;
+            this.WorkMode_B.Text = "Режим работы";
+            this.WorkMode_B.UseVisualStyleBackColor = true;
+            this.WorkMode_B.CheckedChanged += new System.EventHandler(this.WorkMode_B_CheckedChanged);
+            // 
+            // EduMode_B
+            // 
+            this.EduMode_B.AutoSize = true;
+            this.EduMode_B.Location = new System.Drawing.Point(820, 193);
+            this.EduMode_B.Name = "EduMode_B";
+            this.EduMode_B.Size = new System.Drawing.Size(109, 17);
+            this.EduMode_B.TabIndex = 47;
+            this.EduMode_B.Text = "Режим обучения";
+            this.EduMode_B.UseVisualStyleBackColor = true;
+            this.EduMode_B.CheckedChanged += new System.EventHandler(this.EduMode_B_CheckedChanged);
             // 
             // r0_max
             // 
@@ -559,78 +639,35 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // EduMode_B
+            // EduMode_CurV
             // 
-            this.EduMode_B.AutoSize = true;
-            this.EduMode_B.Location = new System.Drawing.Point(820, 213);
-            this.EduMode_B.Name = "EduMode_B";
-            this.EduMode_B.Size = new System.Drawing.Size(109, 17);
-            this.EduMode_B.TabIndex = 47;
-            this.EduMode_B.Text = "Режим обучения";
-            this.EduMode_B.UseVisualStyleBackColor = true;
-            this.EduMode_B.CheckedChanged += new System.EventHandler(this.EduMode_B_CheckedChanged);
+            this.EduMode_CurV.AutoSize = true;
+            this.EduMode_CurV.Location = new System.Drawing.Point(783, 234);
+            this.EduMode_CurV.Name = "EduMode_CurV";
+            this.EduMode_CurV.Size = new System.Drawing.Size(21, 13);
+            this.EduMode_CurV.TabIndex = 56;
+            this.EduMode_CurV.Text = "нм";
+            this.EduMode_CurV.Visible = false;
             // 
-            // WorkMode_B
+            // EduMode_CurLV
             // 
-            this.WorkMode_B.AutoSize = true;
-            this.WorkMode_B.Checked = true;
-            this.WorkMode_B.Location = new System.Drawing.Point(820, 172);
-            this.WorkMode_B.Name = "WorkMode_B";
-            this.WorkMode_B.Size = new System.Drawing.Size(100, 17);
-            this.WorkMode_B.TabIndex = 48;
-            this.WorkMode_B.TabStop = true;
-            this.WorkMode_B.Text = "Режим работы";
-            this.WorkMode_B.UseVisualStyleBackColor = true;
-            this.WorkMode_B.CheckedChanged += new System.EventHandler(this.WorkMode_B_CheckedChanged);
+            this.EduMode_CurLV.AutoSize = true;
+            this.EduMode_CurLV.Location = new System.Drawing.Point(688, 234);
+            this.EduMode_CurLV.Name = "EduMode_CurLV";
+            this.EduMode_CurLV.Size = new System.Drawing.Size(13, 13);
+            this.EduMode_CurLV.TabIndex = 55;
+            this.EduMode_CurLV.Text = "0";
+            this.EduMode_CurLV.Visible = false;
             // 
-            // Selector_Datas_sel
+            // EduMode_CurL
             // 
-            this.Selector_Datas_sel.FormattingEnabled = true;
-            this.Selector_Datas_sel.Location = new System.Drawing.Point(691, 209);
-            this.Selector_Datas_sel.Name = "Selector_Datas_sel";
-            this.Selector_Datas_sel.Size = new System.Drawing.Size(100, 21);
-            this.Selector_Datas_sel.TabIndex = 49;
-            this.Selector_Datas_sel.Visible = false;
-            this.Selector_Datas_sel.SelectedIndexChanged += new System.EventHandler(this.Selector_Datas_sel_SelectedIndexChanged);
-            // 
-            // Selector_Datas_desc
-            // 
-            this.Selector_Datas_desc.AutoSize = true;
-            this.Selector_Datas_desc.Location = new System.Drawing.Point(493, 217);
-            this.Selector_Datas_desc.Name = "Selector_Datas_desc";
-            this.Selector_Datas_desc.Size = new System.Drawing.Size(129, 13);
-            this.Selector_Datas_desc.TabIndex = 50;
-            this.Selector_Datas_desc.Text = "Набор тестовых данных";
-            this.Selector_Datas_desc.Visible = false;
-            // 
-            // EduMode_YouMustGetL
-            // 
-            this.EduMode_YouMustGetL.AutoSize = true;
-            this.EduMode_YouMustGetL.Location = new System.Drawing.Point(493, 241);
-            this.EduMode_YouMustGetL.Name = "EduMode_YouMustGetL";
-            this.EduMode_YouMustGetL.Size = new System.Drawing.Size(146, 13);
-            this.EduMode_YouMustGetL.TabIndex = 51;
-            this.EduMode_YouMustGetL.Text = "Вам необходимо получить: ";
-            this.EduMode_YouMustGetL.Visible = false;
-            // 
-            // EduMode_YouMustGetLV
-            // 
-            this.EduMode_YouMustGetLV.AutoSize = true;
-            this.EduMode_YouMustGetLV.Location = new System.Drawing.Point(688, 241);
-            this.EduMode_YouMustGetLV.Name = "EduMode_YouMustGetLV";
-            this.EduMode_YouMustGetLV.Size = new System.Drawing.Size(0, 13);
-            this.EduMode_YouMustGetLV.TabIndex = 52;
-            this.EduMode_YouMustGetLV.Visible = false;
-            // 
-            // EduMode_YouMustGetV
-            // 
-            this.EduMode_YouMustGetV.AutoSize = true;
-            this.EduMode_YouMustGetV.Location = new System.Drawing.Point(783, 241);
-            this.EduMode_YouMustGetV.Name = "EduMode_YouMustGetV";
-            this.EduMode_YouMustGetV.Size = new System.Drawing.Size(21, 13);
-            this.EduMode_YouMustGetV.TabIndex = 53;
-            this.EduMode_YouMustGetV.Text = "нм";
-            this.EduMode_YouMustGetV.Visible = false;
+            this.EduMode_CurL.AutoSize = true;
+            this.EduMode_CurL.Location = new System.Drawing.Point(493, 234);
+            this.EduMode_CurL.Name = "EduMode_CurL";
+            this.EduMode_CurL.Size = new System.Drawing.Size(102, 13);
+            this.EduMode_CurL.TabIndex = 54;
+            this.EduMode_CurL.Text = "Текущее значение";
+            this.EduMode_CurL.Visible = false;
             // 
             // Form1
             // 
@@ -707,6 +744,9 @@
         private System.Windows.Forms.Label EduMode_YouMustGetV;
         private System.Windows.Forms.Label EduMode_YouMustGetLV;
         private System.Windows.Forms.Label EduMode_YouMustGetL;
+        private System.Windows.Forms.Label EduMode_CurV;
+        private System.Windows.Forms.Label EduMode_CurLV;
+        private System.Windows.Forms.Label EduMode_CurL;
     }
 }
 
