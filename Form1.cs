@@ -438,6 +438,7 @@ namespace WindowsFormsApplication1
             this.hVal.Text = _desc.h_step.ToString();
 
             this.EduDesc.Lines = new[] { _desc.Edu_taskDesc };
+            this.EduMode_YouMustGetLV.Text = _desc.Edu_targetValueD.ToString();
         }
 
         private void EduMode_B_CheckedChanged(object sender, EventArgs e)
