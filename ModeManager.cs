@@ -106,7 +106,12 @@ namespace WindowsFormsApplication1
                     Debug.Assert(_type > m_EduScenarios.Count, "Запрошенный сценарий не найден, переключение в стандартный режим");
                     return m_DefDescriptor;
                 }
-                MessageBox.Show("[debug]_type >= m_EduScenarios.Count - найден запрошенный режим " + _type.ToString() + " Count " + m_EduScenarios.Count.ToString());
+                
+                // debug only
+                //{
+                //    MessageBox.Show("[debug]_type >= m_EduScenarios.Count - найден запрошенный режим " + _type.ToString() + " Count " + m_EduScenarios.Count.ToString());
+                //}
+
                 return m_EduScenarios[_type];
             }
             Debug.Fail("Некорректный режим работы - переключение в стандартный режим");
