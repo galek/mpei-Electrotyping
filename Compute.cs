@@ -1,12 +1,21 @@
-﻿using System;
+﻿/* Copyright (C) 2008-2017, Nick Galko. All rights reserved.
+*
+* Your use and or redistribution of this software in source and / or
+* binary form, with or without modification, is subject to: (i) your
+* ongoing acceptance of and compliance with the terms and conditions of
+* the License Agreement; and (ii) your inclusion of this notice
+* in any version of this software that you use or redistribute.
+* A copy of the License Agreement is available on repository of project
+*/
+
+using System;
 
 namespace WindowsFormsApplication1
 {
     public class Compute
     {
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="_chart"></param>
         /// <param name="_x">отрезок интегрирования - x</param>
@@ -17,12 +26,19 @@ namespace WindowsFormsApplication1
         double r0, double u0, double b, double a,
         double ks1, double ks2, double kf)
         {
+            if (_chart == null)
+                return;
+
             // Очищаем график
             if (_chart.Series != null)
             {
                 _chart.Series[0].Points.Clear();
                 // с закомментированным вариантом - рисует быстрее
                 //_chart.Refresh();
+            }
+            else
+            {
+                return;
             }
 
             double[] arrD = new double[System.Int16.MaxValue];//655360
@@ -45,12 +61,12 @@ namespace WindowsFormsApplication1
 
             do
             {
-                c1 = h * fn1(t, d, r0, u0, b, a, ks1, ks2, kf);// k1 = h * f(x, y) 
-                c2 = h * fn1(t + h2, d + 0.5 * c1, r0, u0, b, a, ks1, ks2, kf);// k2 = h * f(x + h / 2, y + k1 / 2) 
-                c3 = h * fn1(t + h2, d + 0.5 * c2, r0, u0, b, a, ks1, ks2, kf);// k3 = h * f(x + h / 2, y + k2 / 2) 
-                c4 = h * fn1(t + h2, d + c3, r0, u0, b, a, ks1, ks2, kf);// k4 = h * f(x + h, y + k3) 
+                c1 = h * fn1(t, d, r0, u0, b, a, ks1, ks2, kf);// k1 = h * f(x, y)
+                c2 = h * fn1(t + h2, d + 0.5 * c1, r0, u0, b, a, ks1, ks2, kf);// k2 = h * f(x + h / 2, y + k1 / 2)
+                c3 = h * fn1(t + h2, d + 0.5 * c2, r0, u0, b, a, ks1, ks2, kf);// k3 = h * f(x + h / 2, y + k2 / 2)
+                c4 = h * fn1(t + h2, d + c3, r0, u0, b, a, ks1, ks2, kf);// k4 = h * f(x + h, y + k3)
 
-                d = d + (c1 + 2.0 * c2 + 2.0 * c3 + c4) / 6.0;// y = y + 1/ 6 *(k1 + 2 * k2 + 2 * k3 + k4) 
+                d = d + (c1 + 2.0 * c2 + 2.0 * c3 + c4) / 6.0;// y = y + 1/ 6 *(k1 + 2 * k2 + 2 * k3 + k4)
                 t = t + h;// x = x + h
                 m = m + 1;
 

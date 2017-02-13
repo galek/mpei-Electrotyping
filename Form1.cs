@@ -1,15 +1,26 @@
-﻿using System;
+﻿/* Copyright (C) 2008-2017, Nick Galko. All rights reserved.
+*
+* Your use and or redistribution of this software in source and / or
+* binary form, with or without modification, is subject to: (i) your
+* ongoing acceptance of and compliance with the terms and conditions of
+* the License Agreement; and (ii) your inclusion of this notice
+* in any version of this software that you use or redistribute.
+* A copy of the License Agreement is available on repository of project
+*/
+
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        Compute comp = new Compute();
+        private Compute comp = new Compute();
+
         /// <summary>
         /// Muller used for slider, because default slider works only with integer
         /// </summary>
-        const double MULLER = 1000.0;
+        private const double MULLER = 1000.0;
 
         public Form1()
         {
@@ -22,6 +33,7 @@ namespace WindowsFormsApplication1
         {
             this._UpdateValuesLimitsAndCompute(true);
         }
+
         private void _ComputeAction(bool _showMessage)
         {
             if (Tools._CheckEditBoxOnNumbersOnly(this.xlimit, true) || Tools._CheckEditBoxOnNumbersOnly(this.ylimit, true) ||
@@ -124,7 +136,6 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Пустое поле u0-введите его, что бы осуществить перерасчет");
                 return;
             }
-
         }
 
         private void r0_TextChanged(object sender, EventArgs e)
@@ -189,7 +200,6 @@ namespace WindowsFormsApplication1
             }
             else
             { /*MessageBox.Show("!Focused");*/ }
-
         }
 
         private void hVal_TextChanged(object sender, EventArgs e)

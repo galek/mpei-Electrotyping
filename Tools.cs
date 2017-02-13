@@ -1,8 +1,18 @@
-﻿using System;
+﻿/* Copyright (C) 2008-2017, Nick Galko. All rights reserved.
+*
+* Your use and or redistribution of this software in source and / or
+* binary form, with or without modification, is subject to: (i) your
+* ongoing acceptance of and compliance with the terms and conditions of
+* the License Agreement; and (ii) your inclusion of this notice
+* in any version of this software that you use or redistribute.
+* A copy of the License Agreement is available on repository of project
+*/
+
+using System;
 
 namespace WindowsFormsApplication1
 {
-    static class Tools
+    internal static class Tools
     {
         public static bool _BiggerThanZero(int _v)
         {
@@ -13,7 +23,7 @@ namespace WindowsFormsApplication1
         }
 
         /// <summary>
-        /// Функция которая меня цвет заливки поля - полезно для отладки. 
+        /// Функция которая меня цвет заливки поля - полезно для отладки.
         /// </summary>
         /// <param name="tb">Textbox for changing of BackColor</param>
         /// <param name="_valid">Selection of color</param>
