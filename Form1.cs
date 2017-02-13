@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         private Compute comp = new Compute();
+        private ModeManager man = new ModeManager();
 
         /// <summary>
         /// Muller used for slider, because default slider works only with integer
@@ -395,6 +396,42 @@ namespace WindowsFormsApplication1
                 Tools._ChangeColorEditBox(this.r0_min, false);
                 return;
             }
+        }
+
+        private void WorkMode_B_CheckedChanged(object sender, EventArgs e)
+        {
+            if (man == null)
+                return;
+
+            man.SwitchToWorkMode();
+            _ApplyState(man.GetScenario(0));
+        }
+
+        private void _ApplyState(Descriptor _desc)
+        {
+            this.xlimit.Text = _desc.timestart.ToString();
+            this.ylimit.Text = _desc.timeend.ToString();
+
+            this.u0_min.Text = _desc.u0_min.ToString();
+            this.u0.Text = _desc.u0_value.ToString();
+            this.u0_max.Text = _desc.u0_max.ToString();
+
+            this.r0_min.Text = _desc.r0_min.ToString();
+            this.r0.Text = _desc.r0_value.ToString();
+            this.r0_max.Text = _desc.r0_max.ToString();
+
+            this.hVal.Text = _desc.h_step.ToString();
+
+            this.EduDesc.Lines = new[] { _desc.Edu_taskDesc };
+        }
+
+        private void EduMode_B_CheckedChanged(object sender, EventArgs e)
+        {
+            if (man == null)
+                return;
+
+            man.SwitchToEduMode();
+            _ApplyState(man.GetScenario(0));
         }
     }
 }

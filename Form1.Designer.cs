@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,7 +50,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.r0_trackBar2 = new System.Windows.Forms.TrackBar();
             this.u0_trackBar1 = new System.Windows.Forms.TrackBar();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.EduDesc = new System.Windows.Forms.RichTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.kf = new System.Windows.Forms.TextBox();
@@ -76,6 +76,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
+            this.EduMode_B = new System.Windows.Forms.RadioButton();
+            this.WorkMode_B = new System.Windows.Forms.RadioButton();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -137,6 +139,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.WorkMode_B);
+            this.tabPage1.Controls.Add(this.EduMode_B);
             this.tabPage1.Controls.Add(this.r0_max);
             this.tabPage1.Controls.Add(this.r0_min);
             this.tabPage1.Controls.Add(this.label15);
@@ -149,7 +153,7 @@
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.r0_trackBar2);
             this.tabPage1.Controls.Add(this.u0_trackBar1);
-            this.tabPage1.Controls.Add(this.richTextBox2);
+            this.tabPage1.Controls.Add(this.EduDesc);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.kf);
@@ -295,13 +299,13 @@
             this.u0_trackBar1.Value = 300;
             this.u0_trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
-            // richTextBox2
+            // EduDesc
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(0, 526);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(767, 120);
-            this.richTextBox2.TabIndex = 34;
-            this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
+            this.EduDesc.Location = new System.Drawing.Point(0, 526);
+            this.EduDesc.Name = "EduDesc";
+            this.EduDesc.Size = new System.Drawing.Size(767, 120);
+            this.EduDesc.TabIndex = 34;
+            this.EduDesc.Text = resources.GetString("EduDesc.Text");
             // 
             // label11
             // 
@@ -520,17 +524,17 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            legend3.Title = "График функции y=f(x)";
-            this.chart1.Legends.Add(legend3);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            legend2.Title = "График функции y=f(x)";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(28, 42);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(590, 505);
             this.chart1.TabIndex = 10;
             this.chart1.Text = "chart1";
@@ -544,6 +548,30 @@
             this.button1.Text = "Рассчитать";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // EduMode_B
+            // 
+            this.EduMode_B.AutoSize = true;
+            this.EduMode_B.Location = new System.Drawing.Point(820, 174);
+            this.EduMode_B.Name = "EduMode_B";
+            this.EduMode_B.Size = new System.Drawing.Size(109, 17);
+            this.EduMode_B.TabIndex = 47;
+            this.EduMode_B.TabStop = true;
+            this.EduMode_B.Text = "Режим обучения";
+            this.EduMode_B.UseVisualStyleBackColor = true;
+            this.EduMode_B.CheckedChanged += new System.EventHandler(this.EduMode_B_CheckedChanged);
+            // 
+            // WorkMode_B
+            // 
+            this.WorkMode_B.AutoSize = true;
+            this.WorkMode_B.Location = new System.Drawing.Point(820, 209);
+            this.WorkMode_B.Name = "WorkMode_B";
+            this.WorkMode_B.Size = new System.Drawing.Size(100, 17);
+            this.WorkMode_B.TabIndex = 48;
+            this.WorkMode_B.TabStop = true;
+            this.WorkMode_B.Text = "Режим работы";
+            this.WorkMode_B.UseVisualStyleBackColor = true;
+            this.WorkMode_B.CheckedChanged += new System.EventHandler(this.WorkMode_B_CheckedChanged);
             // 
             // Form1
             // 
@@ -575,7 +603,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox EduDesc;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox kf;
@@ -613,6 +641,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.RadioButton WorkMode_B;
+        private System.Windows.Forms.RadioButton EduMode_B;
     }
 }
 
