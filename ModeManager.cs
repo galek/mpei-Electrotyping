@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
         Descriptor m_DefDescriptor = new Descriptor(0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
                                                     /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
                                                     /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                                                    /*Edu_targetValueD*/ 0.0, /*Edu_taskDesc*/ "");
+                                                    /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "");
 
         public ModeManager()
         {
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
                 0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
                 /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
                 /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                /*Edu_targetValueD*/ 0.0, /*Edu_taskDesc*/ "WorkMode"
+                /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "WorkMode"
                 ));
         }
         private void _RegisterEduScenarios()
@@ -63,7 +63,7 @@ namespace WindowsFormsApplication1
                 0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
                 /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
                 /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                /*Edu_targetValueD*/ 0.0, /*Edu_taskDesc*/ "EduMode 1"
+                /*Edu_targetValueD*/ 109400, /*Edu_taskDesc*/ "EduMode 1"
                 ));
             // Второй сценарий
             m_EduScenarios.Add(new Descriptor
@@ -71,7 +71,7 @@ namespace WindowsFormsApplication1
                 0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
                 /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
                 /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                /*Edu_targetValueD*/ 0.0, /*Edu_taskDesc*/ "EduMode 2"
+                /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "EduMode 2"
                 ));
             // 3 сценарий
             m_EduScenarios.Add(new Descriptor
@@ -79,7 +79,7 @@ namespace WindowsFormsApplication1
                 0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
                 /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
                 /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                /*Edu_targetValueD*/ 0.0, /*Edu_taskDesc*/ "EduMode 3"
+                /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "EduMode 3"
                 ));
         }
 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -80,6 +80,9 @@
             this.WorkMode_B = new System.Windows.Forms.RadioButton();
             this.Selector_Datas_sel = new System.Windows.Forms.ComboBox();
             this.Selector_Datas_desc = new System.Windows.Forms.Label();
+            this.EduMode_YouMustGetL = new System.Windows.Forms.Label();
+            this.EduMode_YouMustGetLV = new System.Windows.Forms.Label();
+            this.EduMode_YouMustGetV = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -141,6 +144,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.EduMode_YouMustGetV);
+            this.tabPage1.Controls.Add(this.EduMode_YouMustGetLV);
+            this.tabPage1.Controls.Add(this.EduMode_YouMustGetL);
             this.tabPage1.Controls.Add(this.Selector_Datas_desc);
             this.tabPage1.Controls.Add(this.Selector_Datas_sel);
             this.tabPage1.Controls.Add(this.WorkMode_B);
@@ -528,17 +534,17 @@
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            legend3.Title = "График функции y=f(x)";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            legend1.Title = "График функции y=f(x)";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(28, 42);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(590, 505);
             this.chart1.TabIndex = 10;
             this.chart1.Text = "chart1";
@@ -596,6 +602,35 @@
             this.Selector_Datas_desc.TabIndex = 50;
             this.Selector_Datas_desc.Text = "Набор тестовых данных";
             this.Selector_Datas_desc.Visible = false;
+            // 
+            // EduMode_YouMustGetL
+            // 
+            this.EduMode_YouMustGetL.AutoSize = true;
+            this.EduMode_YouMustGetL.Location = new System.Drawing.Point(493, 241);
+            this.EduMode_YouMustGetL.Name = "EduMode_YouMustGetL";
+            this.EduMode_YouMustGetL.Size = new System.Drawing.Size(146, 13);
+            this.EduMode_YouMustGetL.TabIndex = 51;
+            this.EduMode_YouMustGetL.Text = "Вам необходимо получить: ";
+            this.EduMode_YouMustGetL.Visible = false;
+            // 
+            // EduMode_YouMustGetLV
+            // 
+            this.EduMode_YouMustGetLV.AutoSize = true;
+            this.EduMode_YouMustGetLV.Location = new System.Drawing.Point(688, 241);
+            this.EduMode_YouMustGetLV.Name = "EduMode_YouMustGetLV";
+            this.EduMode_YouMustGetLV.Size = new System.Drawing.Size(0, 13);
+            this.EduMode_YouMustGetLV.TabIndex = 52;
+            this.EduMode_YouMustGetLV.Visible = false;
+            // 
+            // EduMode_YouMustGetV
+            // 
+            this.EduMode_YouMustGetV.AutoSize = true;
+            this.EduMode_YouMustGetV.Location = new System.Drawing.Point(783, 241);
+            this.EduMode_YouMustGetV.Name = "EduMode_YouMustGetV";
+            this.EduMode_YouMustGetV.Size = new System.Drawing.Size(21, 13);
+            this.EduMode_YouMustGetV.TabIndex = 53;
+            this.EduMode_YouMustGetV.Text = "нм";
+            this.EduMode_YouMustGetV.Visible = false;
             // 
             // Form1
             // 
@@ -669,6 +704,9 @@
         private System.Windows.Forms.RadioButton EduMode_B;
         private System.Windows.Forms.Label Selector_Datas_desc;
         private System.Windows.Forms.ComboBox Selector_Datas_sel;
+        private System.Windows.Forms.Label EduMode_YouMustGetV;
+        private System.Windows.Forms.Label EduMode_YouMustGetLV;
+        private System.Windows.Forms.Label EduMode_YouMustGetL;
     }
 }
 

@@ -75,9 +75,12 @@ namespace WindowsFormsApplication1
                 {
                     //print frm2, t, d
                     //write(1, frm2) t, d
-                    Console.Write("T " + t.ToString() + " D " + d.ToString());
+                    Console.WriteLine("T " + t.ToString() + " D " + d.ToString());
 
                     _chart.Series[0].Points.AddXY(t, d);
+
+
+                    Console.WriteLine("Ti " + Convert.ToInt32(t).ToString() + " Di " + Convert.ToInt32(Tools._MetersToNanoMeters(d)).ToString());
 
                     k = k + 1;
                     arrD[k] = d;

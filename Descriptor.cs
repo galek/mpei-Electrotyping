@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
         public double r0_max = 1;
 
         // Используется только в режиме обучения
-        public double Edu_targetValueD = 0.0;
+        public int Edu_targetValueD = 0;
         public string Edu_taskDesc = null;
 
         //TODO: For next-generation of program
@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
             double _u0_min, double _u0_value, double _u0_max,
             double _r0_min, double _r0_value, double _r0_max,
 
-            double _Edu_targetValueD, string _Edu_taskDesc
+            int _Edu_targetValueD, string _Edu_taskDesc
             )
         {
             timestart = _timestart;

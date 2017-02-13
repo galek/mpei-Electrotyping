@@ -39,6 +39,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        public static double _MetersToNanoMeters(double _v)
+        {
+            return _v * 1000000000;
+        }
+
         public static bool _CheckEditBoxOnNumbersOnly(System.Windows.Forms.TextBox tb, bool _resetOnCorrect)
         {
             try

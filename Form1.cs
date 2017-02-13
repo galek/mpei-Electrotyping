@@ -414,6 +414,12 @@ namespace WindowsFormsApplication1
         {
             this.Selector_Datas_desc.Visible = _state;
             this.Selector_Datas_sel.Visible = _state;
+
+            {
+                this.EduMode_YouMustGetL.Visible = _state;
+                this.EduMode_YouMustGetV.Visible = _state;
+                this.EduMode_YouMustGetLV.Visible = _state;
+            }
         }
 
         private void _ApplyState(Descriptor _desc)
