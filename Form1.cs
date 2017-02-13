@@ -167,9 +167,7 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
-
-            _ChangeColorEditBox(this.u0, true);
-
+            
             this._UpdateValuesAndCompute(true);
         }
 
@@ -179,8 +177,6 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
-
-            _ChangeColorEditBox(this.hVal, true);
 
             this._UpdateValuesAndCompute(true);
         }
