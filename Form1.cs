@@ -34,24 +34,14 @@ namespace WindowsFormsApplication1
 
                 return;
             }
-            
+
             comp.ComputeAction(this.chart1, Convert.ToDouble(this.xlimit.Text), Convert.ToDouble(this.ylimit.Text), Convert.ToDouble(this.dVal.Text), Convert.ToDouble(this.hVal.Text),
             Convert.ToDouble(this.r0.Text), Convert.ToDouble(this.u0.Text),
             Convert.ToDouble(this.b.Text), Convert.ToDouble(this.a.Text),
             Convert.ToDouble(this.ks1.Text), Convert.ToDouble(this.ks2.Text), Convert.ToDouble(this.kf.Text));
         }
 
-        private void r0_TextChanged(object sender, EventArgs e)
-        {
-            if (_CheckEditBoxOnNumbersOnly(this.r0))
-            {
-                //MessageBox.Show("Не прошли проверку r0_TextChanged");
-                return;
-            }
 
-            _ChangeColorEditBox(this.r0, true);
-            this._UpdateValuesLimitsAndCompute(true);
-        }
 
         /// <summary>
         /// Функция которая меня цвет заливки поля - полезно для отладки. 
@@ -138,21 +128,11 @@ namespace WindowsFormsApplication1
             this.trackBar2.Maximum = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text) * MULLER);
         }
 
-        private void _UpdateValues()
-        {
-            this._UpdateLimits();
-        }
-
-        private void _UpdateValuesAndCompute(bool _showMessage)
-        {
-            this._UpdateValues();
-            // Now compute
-            this._ComputeAction(_showMessage);
-        }
-
         private void _UpdateValuesLimitsAndCompute(bool _showMessage)
         {
-            this._UpdateValuesAndCompute(_showMessage);
+            this._UpdateLimits();
+            // Now compute
+            this._ComputeAction(_showMessage);
         }
 
         private void r0_Leave(object sender, EventArgs e)
@@ -174,14 +154,65 @@ namespace WindowsFormsApplication1
 
         }
 
+        private void r0_TextChanged(object sender, EventArgs e)
+        {
+            if (_CheckEditBoxOnNumbersOnly(this.r0))
+            {
+                MessageBox.Show("Не прошли проверку r0_TextChanged");
+                return;
+            }
+
+            _ChangeColorEditBox(this.r0, true);
+
+            if (r0.Focused)
+            {
+                //MessageBox.Show("Focused");
+                {
+                    this._UpdateLimits();
+
+                    var value = Convert.ToInt32(Convert.ToDouble(r0.Text) * MULLER);
+                    //MessageBox.Show("Конвертировано: " + value.ToString() + " Максимум " + this.trackBar2.Maximum.ToString()
+                    //    + " Минимум " + this.trackBar2.Minimum.ToString());
+                    //MessageBox.Show(value.ToString());
+
+                    // TODO: сюда добавить проверку, что число в лимитах
+
+                    this.trackBar2.Value = Convert.ToInt32(value);
+                }
+            }
+            else
+            { /*MessageBox.Show("!Focused");*/ }
+        }
+
         private void u0_TextChanged(object sender, EventArgs e)
         {
             if (_CheckEditBoxOnNumbersOnly(this.u0))
             {
+                MessageBox.Show("Не прошли проверку r0_TextChanged");
                 return;
             }
 
-            this._UpdateValuesLimitsAndCompute(true);
+            _ChangeColorEditBox(this.u0, true);
+
+            if (u0.Focused)
+            {
+                //MessageBox.Show("Focused");
+                {
+                    this._UpdateLimits();
+
+                    var value = Convert.ToInt32(Convert.ToDouble(u0.Text) * MULLER);
+                    //MessageBox.Show("Конвертировано: " + value.ToString() + " Максимум " + this.trackBar2.Maximum.ToString()
+                    //    + " Минимум " + this.trackBar2.Minimum.ToString());
+                    //MessageBox.Show(value.ToString());
+
+                    // TODO: сюда добавить проверку, что число в лимитах
+
+                    this.trackBar1.Value = Convert.ToInt32(value);
+                }
+            }
+            else
+            { /*MessageBox.Show("!Focused");*/ }
+
         }
 
         private void hVal_TextChanged(object sender, EventArgs e)
