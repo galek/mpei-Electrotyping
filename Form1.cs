@@ -11,6 +11,8 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+            // Расчитываем исходя из заданных значений
+            this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,7 +92,6 @@ namespace WindowsFormsApplication1
 
         private void ylimit_TextChanged(object sender, EventArgs e)
         {
-            // TODO: Check what time all time is >0
             if (_CheckEditBoxOnNumbersOnly(this.ylimit, true))
             {
                 return;
@@ -111,7 +112,6 @@ namespace WindowsFormsApplication1
 
         private void xlimit_TextChanged(object sender, EventArgs e)
         {
-            // TODO: Check what time all time is >0
             if (_CheckEditBoxOnNumbersOnly(this.xlimit, true))
             {
                 return;
@@ -310,7 +310,6 @@ namespace WindowsFormsApplication1
 
         private void u0_min_TextChanged(object sender, EventArgs e)
         {
-            // TODO: always >0
             if (_CheckEditBoxOnNumbersOnly(this.u0_min, true))
             {
                 return;
@@ -347,7 +346,6 @@ namespace WindowsFormsApplication1
 
         private void u0_max_TextChanged(object sender, EventArgs e)
         {
-            // TODO: always >0
             if (_CheckEditBoxOnNumbersOnly(this.u0_max, true))
             {
                 return;
@@ -377,7 +375,6 @@ namespace WindowsFormsApplication1
 
         private void r0_max_TextChanged(object sender, EventArgs e)
         {
-            // TODO: always >0
             if (_CheckEditBoxOnNumbersOnly(this.r0_max, true))
             {
                 return;
@@ -416,7 +413,6 @@ namespace WindowsFormsApplication1
 
         private void r0_min_TextChanged(object sender, EventArgs e)
         {
-            // TODO: always >0
             if (_CheckEditBoxOnNumbersOnly(this.r0_min, true))
             {
                 return;
