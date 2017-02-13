@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
         /// <param name="_h">шаг интегрирования</param>
         public void ComputeAction(System.Windows.Forms.DataVisualization.Charting.Chart _chart, double _x, double _y, double _d, double _h,
         double r0, double u0, double b, double a,
-        double ks1, double ks2, double kf)
+        double ks1, double ks2, double kf, ref int _CurrValue)
         {
             if (_chart == null)
                 return;
@@ -79,8 +79,10 @@ namespace WindowsFormsApplication1
 
                     _chart.Series[0].Points.AddXY(t, d);
 
+                    // Выводим текущее значение
+                    _CurrValue = Convert.ToInt32(Tools._MetersToNanoMeters(d));
 
-                    Console.WriteLine("Ti " + Convert.ToInt32(t).ToString() + " Di " + Convert.ToInt32(Tools._MetersToNanoMeters(d)).ToString());
+                    Console.WriteLine("Ti " + Convert.ToInt32(t).ToString() + " Di " + _CurrValue.ToString());
 
                     k = k + 1;
                     arrD[k] = d;

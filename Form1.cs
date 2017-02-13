@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
     {
         private Compute comp = new Compute();
         private ModeManager man = new ModeManager();
+        private int EduMode_CurLVInt = -1;
 
         /// <summary>
         /// Muller used for slider, because default slider works only with integer
@@ -35,6 +36,11 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             this._UpdateValuesLimitsAndCompute(true);
+
+            // Обновим значение
+            {
+                this.EduMode_CurLV.Text = EduMode_CurLVInt.ToString();
+            }
         }
 
         private void _ComputeAction(bool _showMessage)
@@ -58,7 +64,7 @@ namespace WindowsFormsApplication1
             comp.ComputeAction(this.chart1, Convert.ToDouble(this.xlimit.Text), Convert.ToDouble(this.ylimit.Text), Convert.ToDouble(this.dVal.Text), Convert.ToDouble(this.hVal.Text),
             Convert.ToDouble(this.r0.Text), Convert.ToDouble(this.u0.Text),
             Convert.ToDouble(this.b.Text), Convert.ToDouble(this.a.Text),
-            Convert.ToDouble(this.ks1.Text), Convert.ToDouble(this.ks2.Text), Convert.ToDouble(this.kf.Text));
+            Convert.ToDouble(this.ks1.Text), Convert.ToDouble(this.ks2.Text), Convert.ToDouble(this.kf.Text), ref this.EduMode_CurLVInt);
         }
 
         private void ylimit_TextChanged(object sender, EventArgs e)
@@ -121,6 +127,10 @@ namespace WindowsFormsApplication1
             this._UpdateLimits();
             // Now compute
             this._ComputeAction(_showMessage);
+            // Обновим значение
+            {
+                this.EduMode_CurLV.Text = EduMode_CurLVInt.ToString();
+            }
         }
 
         private void r0_Leave(object sender, EventArgs e)
@@ -420,7 +430,7 @@ namespace WindowsFormsApplication1
                 this.EduMode_YouMustGetV.Visible = _state;
                 this.EduMode_YouMustGetLV.Visible = _state;
             }
-            {                
+            {
                 this.EduMode_CurV.Visible = _state;
                 this.EduMode_CurL.Visible = _state;
                 this.EduMode_CurLV.Visible = _state;
