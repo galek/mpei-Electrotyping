@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using FloatTrackBar;
 
 namespace WindowsFormsApplication1
 {
@@ -128,18 +129,21 @@ namespace WindowsFormsApplication1
 
         private void _UpdateLimits()
         {
-            this.trackBar1.Minimum = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text));
-            this.trackBar1.Maximum = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text));
+            this.trackBar1.Minimum = (float)(Convert.ToDouble(this.u0_min.Text));
+            this.trackBar1.Maximum = (float)(Convert.ToDouble(this.u0_max.Text));
 
-            this.trackBar2.Minimum = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text));
-            this.trackBar2.Maximum = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text));
+            this.trackBar2.Minimum = (float)(Convert.ToDouble(this.r0_min.Text));
+            this.trackBar2.Maximum = (float)(Convert.ToDouble(this.r0_max.Text));
         }
 
         private void _UpdateValues()
         {
             this._UpdateLimits();
-            u0.Text = this.trackBar1.Value.ToString();
-            r0.Text = this.trackBar2.Value.ToString();
+            //u0.Text = this.trackBar1.Value.ToString();
+            //r0.Text = this.trackBar2.Value.ToString();
+            this.trackBar1.Value = (float)Convert.ToDouble(u0.Text);
+            this.trackBar2.Value = (float)Convert.ToDouble(r0.Text);
+
         }
 
         private void _UpdateValuesAndCompute(bool _showMessage)
