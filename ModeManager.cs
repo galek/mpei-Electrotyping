@@ -1,10 +1,15 @@
-﻿using System;
+﻿/* Copyright (C) 2008-2017, Nick Galko. All rights reserved.
+*
+* Your use and or redistribution of this software in source and / or
+* binary form, with or without modification, is subject to: (i) your
+* ongoing acceptance of and compliance with the terms and conditions of
+* the License Agreement; and (ii) your inclusion of this notice
+* in any version of this software that you use or redistribute.
+* A copy of the License Agreement is available on repository of project
+*/
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
@@ -17,18 +22,20 @@ namespace WindowsFormsApplication1
             Edu_Scenario_Third,
             Edu_Scenario_NUM
         }
+
         public enum WorkMode
         {
             WorkMode_Work = 0,
             WorkMode_Edu,
             WorkMode_NUM
         };
+
         public WorkMode mWorkMode = WorkMode.WorkMode_Work;
 
-        List<Descriptor> m_EduScenarios = new List<Descriptor>();
-        List<Descriptor> m_WorkScenarios = new List<Descriptor>();
+        private List<Descriptor> m_EduScenarios = new List<Descriptor>();
+        private List<Descriptor> m_WorkScenarios = new List<Descriptor>();
 
-        Descriptor m_DefDescriptor = new Descriptor(0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
+        private Descriptor m_DefDescriptor = new Descriptor(0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
                                                     /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
                                                     /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
                                                     /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "");
@@ -43,6 +50,7 @@ namespace WindowsFormsApplication1
             _RegisterWorkScenarios();
             _RegisterEduScenarios();
         }
+
         private void _RegisterWorkScenarios()
         {
             // Первый сценарий
@@ -54,6 +62,7 @@ namespace WindowsFormsApplication1
                 /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "WorkMode"
                 ));
         }
+
         private void _RegisterEduScenarios()
         {
             // TODO: Разнообразить сценарии
@@ -84,7 +93,7 @@ namespace WindowsFormsApplication1
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="_type"></param>
         /// <returns></returns>
@@ -106,7 +115,7 @@ namespace WindowsFormsApplication1
                     Debug.Assert(_type > m_EduScenarios.Count, "Запрошенный сценарий не найден, переключение в стандартный режим");
                     return m_DefDescriptor;
                 }
-                
+
                 // debug only
                 //{
                 //    MessageBox.Show("[debug]_type >= m_EduScenarios.Count - найден запрошенный режим " + _type.ToString() + " Count " + m_EduScenarios.Count.ToString());

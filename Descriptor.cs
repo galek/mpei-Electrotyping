@@ -1,8 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/* Copyright (C) 2008-2017, Nick Galko. All rights reserved.
+*
+* Your use and or redistribution of this software in source and / or
+* binary form, with or without modification, is subject to: (i) your
+* ongoing acceptance of and compliance with the terms and conditions of
+* the License Agreement; and (ii) your inclusion of this notice
+* in any version of this software that you use or redistribute.
+* A copy of the License Agreement is available on repository of project
+*/
 
 namespace WindowsFormsApplication1
 {
@@ -23,6 +27,7 @@ namespace WindowsFormsApplication1
 
         // Используется только в режиме обучения
         public int Edu_targetValueD = 0;
+
         public string Edu_taskDesc = null;
 
         //TODO: For next-generation of program
