@@ -6,9 +6,6 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Compute comp = new Compute();
-        // TODO: Implement different Edit boxes
-        float m_MaxEnergy = 0;
-        float m_MaxR0 = 0;
 
         public Form1()
         {
@@ -17,7 +14,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this._UpdateValuesAndCompute(true);
+            this._UpdateValuesLimitsAndCompute(true);
         }
         private void _ComputeAction(bool _showMessage)
         {
@@ -51,7 +48,7 @@ namespace WindowsFormsApplication1
             }
 
             _ChangeColorEditBox(this.r0, true);
-            this._UpdateValuesAndCompute(true);
+            this._UpdateValuesLimitsAndCompute(true);
         }
 
         /// <summary>
@@ -108,7 +105,7 @@ namespace WindowsFormsApplication1
 
             _ChangeColorEditBox(this.ylimit, true);
 
-            this._UpdateValuesAndCompute(true);
+            this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void xlimit_TextChanged(object sender, EventArgs e)
@@ -121,16 +118,23 @@ namespace WindowsFormsApplication1
 
             _ChangeColorEditBox(this.xlimit, true);
 
-            this._UpdateValuesAndCompute(true);
+            this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
-            this._UpdateValuesAndCompute(true);
+            this._UpdateValuesLimitsAndCompute(true);
+        }
+
+        private void _UpdateLimits()
+        {
+            this.trackBar1.Minimum = Convert.ToInt32(this.u0_min.Text);
+            this.trackBar1.Maximum = Convert.ToInt32(this.u0_max.Text);
         }
 
         private void _UpdateValues()
         {
+            this._UpdateLimits();
             u0.Text = this.trackBar1.Value.ToString();
             r0.Text = this.trackBar2.Value.ToString();
         }
@@ -140,6 +144,11 @@ namespace WindowsFormsApplication1
             this._UpdateValues();
             // Now compute
             this._ComputeAction(_showMessage);
+        }
+
+        private void _UpdateValuesLimitsAndCompute(bool _showMessage)
+        {
+            this._UpdateValuesAndCompute(_showMessage);
         }
 
         private void r0_Leave(object sender, EventArgs e)
@@ -167,8 +176,8 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
-            
-            this._UpdateValuesAndCompute(true);
+
+            this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void hVal_TextChanged(object sender, EventArgs e)
@@ -178,7 +187,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            this._UpdateValuesAndCompute(true);
+            this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void hVal_Leave(object sender, EventArgs e)
@@ -213,7 +222,49 @@ namespace WindowsFormsApplication1
 
         private void trackBar2_ValueChanged(object sender, EventArgs e)
         {
-            this._UpdateValuesAndCompute(true);
+            this._UpdateValuesLimitsAndCompute(true);
+        }
+
+        private void u0_min_TextChanged(object sender, EventArgs e)
+        {
+            // TODO: always >0
+            if (_CheckEditBoxOnNumbersOnly(this.u0_min))
+            {
+                return;
+            }
+
+            this._UpdateValuesLimitsAndCompute(true);
+        }
+
+        private void u0_min_Leave(object sender, EventArgs e)
+        {
+            if (_CheckEditBoxOnNumbersOnly(this.u0_min))
+            {
+                MessageBox.Show("Пустое поле u0_min-введите его, что бы осуществить перерасчет");
+                _ChangeColorEditBox(this.u0_min, false);
+                return;
+            }
+        }
+
+        private void u0_max_TextChanged(object sender, EventArgs e)
+        {
+            // TODO: always >0
+            if (_CheckEditBoxOnNumbersOnly(this.u0_max))
+            {
+                return;
+            }
+
+            this._UpdateValuesLimitsAndCompute(true);
+        }
+
+        private void u0_max_Leave(object sender, EventArgs e)
+        {
+            if (_CheckEditBoxOnNumbersOnly(this.u0_max))
+            {
+                MessageBox.Show("Пустое поле u0_max-введите его, что бы осуществить перерасчет");
+                _ChangeColorEditBox(this.u0_max, false);
+                return;
+            }
         }
     }
 }
