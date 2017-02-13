@@ -101,7 +101,7 @@ namespace WindowsFormsApplication1
             var value = Convert.ToInt32(Convert.ToDouble(this.ylimit.Text) * MULLER);
             if (!_BiggerThanZero(value))
             {
-                MessageBox.Show("Данное значение должно быть больше 0");
+                //MessageBox.Show("Данное значение должно быть больше 0");
                 _ChangeColorEditBox(this.ylimit, false);
                 return;
             }
@@ -122,7 +122,7 @@ namespace WindowsFormsApplication1
             var value = Convert.ToInt32(Convert.ToDouble(this.xlimit.Text) * MULLER);
             if (!_BiggerThanZero(value))
             {
-                MessageBox.Show("Данное значение должно быть больше 0");
+               // MessageBox.Show("Данное значение должно быть больше 0");
                 _ChangeColorEditBox(this.xlimit, false);
                 return;
             }
@@ -246,7 +246,7 @@ namespace WindowsFormsApplication1
             var value = Convert.ToInt32(Convert.ToDouble(this.hVal.Text) * MULLER);
             if (!_BiggerThanZero(value))
             {
-                MessageBox.Show("Данное значение должно быть больше 0");
+               // MessageBox.Show("Данное значение должно быть больше 0");
                 _ChangeColorEditBox(this.hVal, false);
                 return;
             }
@@ -339,7 +339,7 @@ namespace WindowsFormsApplication1
             var value = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
             if (!_BiggerThanZero(value))
             {
-                MessageBox.Show("Данное значение должно быть больше 0");
+                //MessageBox.Show("Данное значение должно быть больше 0");
                 _ChangeColorEditBox(this.u0_min, false);
                 return;
             }
@@ -356,7 +356,7 @@ namespace WindowsFormsApplication1
             var value = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text) * MULLER);
             if (!_BiggerThanZero(value))
             {
-                MessageBox.Show("Данное значение должно быть больше 0");
+                //MessageBox.Show("Данное значение должно быть больше 0");
                 _ChangeColorEditBox(this.u0_max, false);
                 return;
             }
@@ -386,7 +386,7 @@ namespace WindowsFormsApplication1
             var value = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text) * MULLER);
             if (!_BiggerThanZero(value))
             {
-                MessageBox.Show("Данное значение должно быть больше 0");
+                //MessageBox.Show("Данное значение должно быть больше 0");
                 _ChangeColorEditBox(this.r0_max, false);
                 return;
             }
