@@ -128,8 +128,11 @@ namespace WindowsFormsApplication1
 
         private void _UpdateLimits()
         {
-            this.trackBar1.Minimum = Convert.ToInt32(this.u0_min.Text);
-            this.trackBar1.Maximum = Convert.ToInt32(this.u0_max.Text);
+            this.trackBar1.Minimum = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text));
+            this.trackBar1.Maximum = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text));
+
+            this.trackBar2.Minimum = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text));
+            this.trackBar2.Maximum = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text));
         }
 
         private void _UpdateValues()
@@ -263,6 +266,48 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Пустое поле u0_max-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.u0_max, false);
+                return;
+            }
+        }
+
+        private void r0_max_TextChanged(object sender, EventArgs e)
+        {
+            // TODO: always >0
+            if (_CheckEditBoxOnNumbersOnly(this.r0_max))
+            {
+                return;
+            }
+
+            this._UpdateValuesLimitsAndCompute(true);
+        }
+
+        private void r0_max_Leave(object sender, EventArgs e)
+        {
+            if (_CheckEditBoxOnNumbersOnly(this.r0_max))
+            {
+                MessageBox.Show("Пустое поле r0_max-введите его, что бы осуществить перерасчет");
+                _ChangeColorEditBox(this.r0_max, false);
+                return;
+            }
+        }
+
+        private void r0_min_TextChanged(object sender, EventArgs e)
+        {
+            // TODO: always >0
+            if (_CheckEditBoxOnNumbersOnly(this.r0_min))
+            {
+                return;
+            }
+
+            this._UpdateValuesLimitsAndCompute(true);
+        }
+
+        private void r0_min_Leave(object sender, EventArgs e)
+        {
+            if (_CheckEditBoxOnNumbersOnly(this.r0_min))
+            {
+                MessageBox.Show("Пустое поле r0_min-введите его, что бы осуществить перерасчет");
+                _ChangeColorEditBox(this.r0_min, false);
                 return;
             }
         }
