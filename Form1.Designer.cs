@@ -29,22 +29,27 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.r0_max = new System.Windows.Forms.TextBox();
+            this.r0_min = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.u0_max = new System.Windows.Forms.TextBox();
             this.u0_min = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.r0_trackBar2 = new System.Windows.Forms.TrackBar();
+            this.u0_trackBar1 = new System.Windows.Forms.TrackBar();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -71,18 +76,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
-            this.r0_max = new System.Windows.Forms.TextBox();
-            this.r0_min = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r0_trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.u0_trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,8 +147,8 @@
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.trackBar2);
-            this.tabPage1.Controls.Add(this.trackBar1);
+            this.tabPage1.Controls.Add(this.r0_trackBar2);
+            this.tabPage1.Controls.Add(this.u0_trackBar1);
             this.tabPage1.Controls.Add(this.richTextBox2);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label10);
@@ -182,6 +182,53 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Модель";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // r0_max
+            // 
+            this.r0_max.Location = new System.Drawing.Point(924, 113);
+            this.r0_max.Name = "r0_max";
+            this.r0_max.Size = new System.Drawing.Size(50, 20);
+            this.r0_max.TabIndex = 46;
+            this.r0_max.Text = "1";
+            this.r0_max.TextChanged += new System.EventHandler(this.r0_max_TextChanged);
+            this.r0_max.Leave += new System.EventHandler(this.r0_max_Leave);
+            // 
+            // r0_min
+            // 
+            this.r0_min.Location = new System.Drawing.Point(807, 111);
+            this.r0_min.Name = "r0_min";
+            this.r0_min.Size = new System.Drawing.Size(50, 20);
+            this.r0_min.TabIndex = 45;
+            this.r0_min.Text = "0,1";
+            this.r0_min.TextChanged += new System.EventHandler(this.r0_min_TextChanged);
+            this.r0_min.Leave += new System.EventHandler(this.r0_min_Leave);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(884, 116);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(19, 13);
+            this.label15.TabIndex = 44;
+            this.label15.Text = "до";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(773, 116);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(18, 13);
+            this.label16.TabIndex = 43;
+            this.label16.Text = "от";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(831, 95);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(146, 13);
+            this.label17.TabIndex = 42;
+            this.label17.Text = "Параметры сопротивления";
             // 
             // u0_max
             // 
@@ -230,23 +277,23 @@
             this.label12.TabIndex = 37;
             this.label12.Text = "Параметры напряжения";
             // 
-            // trackBar2
+            // r0_trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(807, 351);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(167, 45);
-            this.trackBar2.TabIndex = 36;
-            this.trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
+            this.r0_trackBar2.Location = new System.Drawing.Point(807, 351);
+            this.r0_trackBar2.Name = "r0_trackBar2";
+            this.r0_trackBar2.Size = new System.Drawing.Size(167, 45);
+            this.r0_trackBar2.TabIndex = 36;
+            this.r0_trackBar2.ValueChanged += new System.EventHandler(this.trackBar2_ValueChanged);
             // 
-            // trackBar1
+            // u0_trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(807, 300);
-            this.trackBar1.Maximum = 10000;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(167, 45);
-            this.trackBar1.TabIndex = 35;
-            this.trackBar1.Value = 300;
-            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
+            this.u0_trackBar1.Location = new System.Drawing.Point(807, 300);
+            this.u0_trackBar1.Maximum = 10000;
+            this.u0_trackBar1.Name = "u0_trackBar1";
+            this.u0_trackBar1.Size = new System.Drawing.Size(167, 45);
+            this.u0_trackBar1.TabIndex = 35;
+            this.u0_trackBar1.Value = 300;
+            this.u0_trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // richTextBox2
             // 
@@ -473,17 +520,17 @@
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            legend6.Title = "График функции y=f(x)";
-            this.chart1.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            legend2.Title = "График функции y=f(x)";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(28, 42);
             this.chart1.Name = "chart1";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(590, 505);
             this.chart1.TabIndex = 10;
             this.chart1.Text = "chart1";
@@ -497,53 +544,6 @@
             this.button1.Text = "Рассчитать";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // r0_max
-            // 
-            this.r0_max.Location = new System.Drawing.Point(924, 113);
-            this.r0_max.Name = "r0_max";
-            this.r0_max.Size = new System.Drawing.Size(50, 20);
-            this.r0_max.TabIndex = 46;
-            this.r0_max.Text = "1";
-            this.r0_max.TextChanged += new System.EventHandler(this.r0_max_TextChanged);
-            this.r0_max.Leave += new System.EventHandler(this.r0_max_Leave);
-            // 
-            // r0_min
-            // 
-            this.r0_min.Location = new System.Drawing.Point(807, 111);
-            this.r0_min.Name = "r0_min";
-            this.r0_min.Size = new System.Drawing.Size(50, 20);
-            this.r0_min.TabIndex = 45;
-            this.r0_min.Text = "0,1";
-            this.r0_min.TextChanged += new System.EventHandler(this.r0_min_TextChanged);
-            this.r0_min.Leave += new System.EventHandler(this.r0_min_Leave);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(884, 116);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(19, 13);
-            this.label15.TabIndex = 44;
-            this.label15.Text = "до";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(773, 116);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(18, 13);
-            this.label16.TabIndex = 43;
-            this.label16.Text = "от";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(831, 95);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(146, 13);
-            this.label17.TabIndex = 42;
-            this.label17.Text = "Параметры сопротивления";
             // 
             // Form1
             // 
@@ -559,8 +559,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.r0_trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.u0_trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
@@ -599,8 +599,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.TrackBar u0_trackBar1;
+        private System.Windows.Forms.TrackBar r0_trackBar2;
         private System.Windows.Forms.TextBox u0_max;
         private System.Windows.Forms.TextBox u0_min;
         private System.Windows.Forms.Label label14;
