@@ -21,15 +21,19 @@ namespace WindowsFormsApplication1
         }
         private void _ComputeAction(bool _showMessage)
         {
-            if (string.IsNullOrEmpty(this.xlimit.Text) || string.IsNullOrEmpty(this.ylimit.Text) ||
-               string.IsNullOrEmpty(this.dVal.Text) || string.IsNullOrEmpty(this.hVal.Text) ||
-               string.IsNullOrEmpty(this.r0.Text) || string.IsNullOrEmpty(this.u0.Text) ||
-               string.IsNullOrEmpty(this.b.Text) || string.IsNullOrEmpty(this.a.Text) ||
-               string.IsNullOrEmpty(this.ks1.Text) || string.IsNullOrEmpty(this.ks2.Text)
-               || string.IsNullOrEmpty(this.kf.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.xlimit) || _CheckEditBoxOnNumbersOnly(this.ylimit) ||
+               _CheckEditBoxOnNumbersOnly(this.dVal) || _CheckEditBoxOnNumbersOnly(this.hVal) ||
+               _CheckEditBoxOnNumbersOnly(this.r0) || _CheckEditBoxOnNumbersOnly(this.u0) ||
+               _CheckEditBoxOnNumbersOnly(this.b) || _CheckEditBoxOnNumbersOnly(this.a) ||
+               _CheckEditBoxOnNumbersOnly(this.ks1) || _CheckEditBoxOnNumbersOnly(this.ks2)
+               || _CheckEditBoxOnNumbersOnly(this.kf))
             {
-                //if (_showMessage)
-                //    MessageBox.Show("Не все поля заполнены - заполните, что бы осуществить перерасчет");
+                // debug only
+                //{
+                //    if (_showMessage)
+                //        MessageBox.Show("Не все поля заполнены - заполните, что бы осуществить перерасчет");
+                //}
+
                 return;
             }
 
@@ -41,7 +45,7 @@ namespace WindowsFormsApplication1
 
         private void r0_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.r0.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.r0))
             {
                 return;
             }
@@ -67,6 +71,33 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private bool _CheckEditBoxOnNumbersOnly(System.Windows.Forms.TextBox tb)
+        {
+            try
+            {
+                double temp = Convert.ToDouble(tb.Text);
+            }
+            catch (Exception)
+            {
+                // debug only
+                //{
+                //    MessageBox.Show("Please provide number only");
+                //}
+
+                _ChangeColorEditBox(tb, false);
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(tb.Text))
+            {
+                _ChangeColorEditBox(tb, false);
+                return true;
+            }
+
+            _ChangeColorEditBox(tb, true);
+            return false;
+        }
+
         private void ylimit_TextChanged(object sender, EventArgs e)
         {
             this._UpdateValuesAndCompute(true);
@@ -74,7 +105,7 @@ namespace WindowsFormsApplication1
 
         private void xlimit_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.xlimit.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.xlimit))
             {
                 return;
             }
@@ -91,6 +122,7 @@ namespace WindowsFormsApplication1
 
         private void _UpdateValues()
         {
+            // TODO: Update 
             u0.Text = this.trackBar1.Value.ToString();
         }
 
@@ -103,20 +135,18 @@ namespace WindowsFormsApplication1
 
         private void r0_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.r0.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.r0))
             {
                 MessageBox.Show("Пустое поле R0-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.r0, false);
                 return;
             }
         }
 
         private void u0_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.u0.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.u0))
             {
                 MessageBox.Show("Пустое поле u0-введите его, что бы осуществить перерасчет");
-                _ChangeColorEditBox(this.u0, false);
                 return;
             }
 
@@ -124,7 +154,7 @@ namespace WindowsFormsApplication1
 
         private void u0_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.u0.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.u0))
             {
                 return;
             }
@@ -136,7 +166,7 @@ namespace WindowsFormsApplication1
 
         private void hVal_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.hVal.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.hVal))
             {
                 return;
             }
@@ -148,7 +178,7 @@ namespace WindowsFormsApplication1
 
         private void hVal_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.hVal.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.hVal))
             {
                 MessageBox.Show("Пустое поле u0-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.hVal, false);
@@ -158,7 +188,7 @@ namespace WindowsFormsApplication1
 
         private void xlimit_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.xlimit.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.xlimit))
             {
                 MessageBox.Show("Пустое поле xlimit-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.xlimit, false);
@@ -168,7 +198,7 @@ namespace WindowsFormsApplication1
 
         private void ylimit_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.ylimit.Text))
+            if (_CheckEditBoxOnNumbersOnly(this.ylimit))
             {
                 MessageBox.Show("Пустое поле ylimit-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.ylimit, false);
