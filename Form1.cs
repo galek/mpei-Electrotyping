@@ -28,6 +28,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             // Расчитываем исходя из заданных значений
             this._UpdateValuesLimitsAndCompute(true);
+            // Добавляем уже зарание заданные сценарии для обучения
+            this._InitEduModeScenaries();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -434,12 +436,28 @@ namespace WindowsFormsApplication1
 
         private void EduMode_B_CheckedChanged(object sender, EventArgs e)
         {
+            this._SwitchToEduMode(0);
+        }
+
+        private void _SwitchToEduMode(int _in)
+        {
             if (man == null)
                 return;
 
             man.SwitchToEduMode();
-            _ApplyState(man.GetScenario(0));
+            _ApplyState(man.GetScenario(_in));
             _ShowHideEduMode(true);
+        }
+
+        private void _InitEduModeScenaries()
+        {
+            for (var i = ModeManager.Edu_Scenario.Edu_Scenario_First; i < ModeManager.Edu_Scenario.Edu_Scenario_NUM; i++)
+                this.Selector_Datas_sel.Items.Add(i.ToString());// TODO: тут можно сделать получение заголовка из дескриптора
+        }
+
+        private void Selector_Datas_sel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _SwitchToEduMode(this.Selector_Datas_sel.SelectedIndex);
         }
     }
 }
