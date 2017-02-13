@@ -130,6 +130,12 @@ namespace WindowsFormsApplication1
             // Обновим значение
             {
                 this.EduMode_CurLV.Text = EduMode_CurLVInt.ToString();
+                {
+                    if (man == null)
+                        return;
+
+                    this.EduDesc.Lines = new[] { EduHelpers.GetResult(Convert.ToInt32(this.EduMode_YouMustGetLV.Text), EduMode_CurLVInt, man.mWorkMode == ModeManager.WorkMode.WorkMode_Work) };
+                }
             }
         }
 
@@ -452,7 +458,9 @@ namespace WindowsFormsApplication1
 
             this.hVal.Text = _desc.h_step.ToString();
 
+            // TODO: сделать отдельное поле
             this.EduDesc.Lines = new[] { _desc.Edu_taskDesc };
+
             this.EduMode_YouMustGetLV.Text = _desc.Edu_targetValueD.ToString();
         }
 
@@ -475,6 +483,8 @@ namespace WindowsFormsApplication1
         {
             for (var i = ModeManager.Edu_Scenario.Edu_Scenario_First; i < ModeManager.Edu_Scenario.Edu_Scenario_NUM; i++)
                 this.Selector_Datas_sel.Items.Add(i.ToString());// TODO: тут можно сделать получение заголовка из дескриптора
+            // TODO: активировать сразу, но там евент весит
+            //this.Selector_Datas_sel.SelectedIndex = 0;
         }
 
         private void Selector_Datas_sel_SelectedIndexChanged(object sender, EventArgs e)

@@ -17,13 +17,13 @@ namespace WindowsFormsApplication1
             Edu_Scenario_Third,
             Edu_Scenario_NUM
         }
-        enum WorkMode
+        public enum WorkMode
         {
             WorkMode_Work = 0,
             WorkMode_Edu,
             WorkMode_NUM
         };
-        WorkMode mWorkMode = WorkMode.WorkMode_Work;
+        public WorkMode mWorkMode = WorkMode.WorkMode_Work;
 
         List<Descriptor> m_EduScenarios = new List<Descriptor>();
         List<Descriptor> m_WorkScenarios = new List<Descriptor>();
@@ -63,23 +63,23 @@ namespace WindowsFormsApplication1
                 0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
                 /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
                 /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                /*Edu_targetValueD*/ 109400, /*Edu_taskDesc*/ "EduMode 1"
+                /*Edu_targetValueD*/ 109400, /*Edu_taskDesc*/ "Варьируйте параметры для достижения значения гальвонического покрытия в 109400 нм"
                 ));
             // Второй сценарий
             m_EduScenarios.Add(new Descriptor
                 (
-                0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
-                /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
-                /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "EduMode 2"
+                0/*timestart*/, 1500.0/*timeend*/, 0.01/*h_step*/,
+                /*u0_min*/300, /*u0_value*/ 500, /*u0_max*/ 9000,
+                /*r0_min*/ 0.5, /*r0_value*/ 0.6, /*r0_max*/ 10,
+                /*Edu_targetValueD*/ 260451, /*Edu_taskDesc*/ "Варьируйте параметры для достижения значения гальвонического покрытия в 260451 нм"
                 ));
             // 3 сценарий
             m_EduScenarios.Add(new Descriptor
                 (
-                0/*timestart*/, 1500.0/*timeend*/, 0.1/*h_step*/,
-                /*u0_min*/300, /*u0_value*/ 300, /*u0_max*/ 1000,
+                1500.0/*timestart*/, 7500.0/*timeend*/, 0.1/*h_step*/,
+                /*u0_min*/100, /*u0_value*/ 300, /*u0_max*/ 1000,
                 /*r0_min*/ 0.1, /*r0_value*/ 0.1, /*r0_max*/ 1,
-                /*Edu_targetValueD*/ 0, /*Edu_taskDesc*/ "EduMode 3"
+                /*Edu_targetValueD*/ 185846, /*Edu_taskDesc*/ "У вас упало напряжение на временном интервале 1500-7500 секунд. Варьируйте параметры для избежания брака и получения значения гальвонического покрытия в 185846 нм"
                 ));
         }
 
