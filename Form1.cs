@@ -440,6 +440,7 @@ namespace WindowsFormsApplication1
                 this.EduMode_CurV.Visible = _state;
                 this.EduMode_CurL.Visible = _state;
                 this.EduMode_CurLV.Visible = _state;
+                this.EduDesc.Visible = _state;
             }
         }
 

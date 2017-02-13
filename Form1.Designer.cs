@@ -29,15 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.EduMode_CurV = new System.Windows.Forms.Label();
+            this.EduMode_CurLV = new System.Windows.Forms.Label();
+            this.EduMode_CurL = new System.Windows.Forms.Label();
             this.EduMode_YouMustGetV = new System.Windows.Forms.Label();
             this.EduMode_YouMustGetLV = new System.Windows.Forms.Label();
             this.EduMode_YouMustGetL = new System.Windows.Forms.Label();
@@ -83,9 +86,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
-            this.EduMode_CurV = new System.Windows.Forms.Label();
-            this.EduMode_CurLV = new System.Windows.Forms.Label();
-            this.EduMode_CurL = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -202,6 +202,36 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Модель";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // EduMode_CurV
+            // 
+            this.EduMode_CurV.AutoSize = true;
+            this.EduMode_CurV.Location = new System.Drawing.Point(783, 234);
+            this.EduMode_CurV.Name = "EduMode_CurV";
+            this.EduMode_CurV.Size = new System.Drawing.Size(21, 13);
+            this.EduMode_CurV.TabIndex = 56;
+            this.EduMode_CurV.Text = "нм";
+            this.EduMode_CurV.Visible = false;
+            // 
+            // EduMode_CurLV
+            // 
+            this.EduMode_CurLV.AutoSize = true;
+            this.EduMode_CurLV.Location = new System.Drawing.Point(688, 234);
+            this.EduMode_CurLV.Name = "EduMode_CurLV";
+            this.EduMode_CurLV.Size = new System.Drawing.Size(13, 13);
+            this.EduMode_CurLV.TabIndex = 55;
+            this.EduMode_CurLV.Text = "0";
+            this.EduMode_CurLV.Visible = false;
+            // 
+            // EduMode_CurL
+            // 
+            this.EduMode_CurL.AutoSize = true;
+            this.EduMode_CurL.Location = new System.Drawing.Point(493, 234);
+            this.EduMode_CurL.Name = "EduMode_CurL";
+            this.EduMode_CurL.Size = new System.Drawing.Size(102, 13);
+            this.EduMode_CurL.TabIndex = 54;
+            this.EduMode_CurL.Text = "Текущее значение";
+            this.EduMode_CurL.Visible = false;
             // 
             // EduMode_YouMustGetV
             // 
@@ -393,9 +423,11 @@
             // 
             this.EduDesc.Location = new System.Drawing.Point(0, 526);
             this.EduDesc.Name = "EduDesc";
+            this.EduDesc.ReadOnly = true;
             this.EduDesc.Size = new System.Drawing.Size(767, 120);
             this.EduDesc.TabIndex = 34;
             this.EduDesc.Text = resources.GetString("EduDesc.Text");
+            this.EduDesc.Visible = false;
             // 
             // label11
             // 
@@ -614,18 +646,18 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            legend2.Title = "График функции y=f(x)";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            legend1.Title = "Зависимость толщины ГП от времени электролиза";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(28, 42);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(590, 505);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Размер ГП";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(739, 505);
             this.chart1.TabIndex = 10;
             this.chart1.Text = "chart1";
             // 
@@ -638,36 +670,6 @@
             this.button1.Text = "Рассчитать";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // EduMode_CurV
-            // 
-            this.EduMode_CurV.AutoSize = true;
-            this.EduMode_CurV.Location = new System.Drawing.Point(783, 234);
-            this.EduMode_CurV.Name = "EduMode_CurV";
-            this.EduMode_CurV.Size = new System.Drawing.Size(21, 13);
-            this.EduMode_CurV.TabIndex = 56;
-            this.EduMode_CurV.Text = "нм";
-            this.EduMode_CurV.Visible = false;
-            // 
-            // EduMode_CurLV
-            // 
-            this.EduMode_CurLV.AutoSize = true;
-            this.EduMode_CurLV.Location = new System.Drawing.Point(688, 234);
-            this.EduMode_CurLV.Name = "EduMode_CurLV";
-            this.EduMode_CurLV.Size = new System.Drawing.Size(13, 13);
-            this.EduMode_CurLV.TabIndex = 55;
-            this.EduMode_CurLV.Text = "0";
-            this.EduMode_CurLV.Visible = false;
-            // 
-            // EduMode_CurL
-            // 
-            this.EduMode_CurL.AutoSize = true;
-            this.EduMode_CurL.Location = new System.Drawing.Point(493, 234);
-            this.EduMode_CurL.Name = "EduMode_CurL";
-            this.EduMode_CurL.Size = new System.Drawing.Size(102, 13);
-            this.EduMode_CurL.TabIndex = 54;
-            this.EduMode_CurL.Text = "Текущее значение";
-            this.EduMode_CurL.Visible = false;
             // 
             // Form1
             // 
