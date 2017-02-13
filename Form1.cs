@@ -98,6 +98,14 @@ namespace WindowsFormsApplication1
 
             _ChangeColorEditBox(this.ylimit, true);
 
+            var value = Convert.ToInt32(Convert.ToDouble(this.ylimit.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
+                _ChangeColorEditBox(this.ylimit, false);
+                return;
+            }
+
             this._UpdateValuesLimitsAndCompute(true);
         }
 
@@ -110,6 +118,14 @@ namespace WindowsFormsApplication1
             }
 
             _ChangeColorEditBox(this.xlimit, true);
+
+            var value = Convert.ToInt32(Convert.ToDouble(this.xlimit.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
+                _ChangeColorEditBox(this.xlimit, false);
+                return;
+            }
 
             this._UpdateValuesLimitsAndCompute(true);
         }
@@ -175,7 +191,7 @@ namespace WindowsFormsApplication1
                     //MessageBox.Show("Конвертировано: " + value.ToString() + " Максимум " + this.trackBar2.Maximum.ToString()
                     //    + " Минимум " + this.trackBar2.Minimum.ToString());
                     //MessageBox.Show(value.ToString());
-                    
+
                     if (IsInValidValue(value, this.r0_trackBar2, this.r0))
                         return;
 
@@ -227,6 +243,14 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            var value = Convert.ToInt32(Convert.ToDouble(this.hVal.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
+                _ChangeColorEditBox(this.hVal, false);
+                return;
+            }
+
             this._UpdateValuesLimitsAndCompute(true);
         }
 
@@ -259,7 +283,7 @@ namespace WindowsFormsApplication1
 
         private void xlimit_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.xlimit, true))
+            if (_CheckEditBoxOnNumbersOnly(this.xlimit, false))
             {
                 MessageBox.Show("Пустое поле xlimit-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.xlimit, false);
@@ -269,7 +293,7 @@ namespace WindowsFormsApplication1
 
         private void ylimit_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.ylimit, true))
+            if (_CheckEditBoxOnNumbersOnly(this.ylimit, false))
             {
                 MessageBox.Show("Пустое поле ylimit-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.ylimit, false);
@@ -292,15 +316,30 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            var value = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
+                _ChangeColorEditBox(this.u0_min, false);
+                return;
+            }
+
             this.u0_trackBar1.Minimum = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
             this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void u0_min_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0_min, true))
+            if (_CheckEditBoxOnNumbersOnly(this.u0_min, false))
             {
                 MessageBox.Show("Пустое поле u0_min-введите его, что бы осуществить перерасчет");
+                _ChangeColorEditBox(this.u0_min, false);
+                return;
+            }
+            var value = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
                 _ChangeColorEditBox(this.u0_min, false);
                 return;
             }
@@ -314,13 +353,21 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            var value = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
+                _ChangeColorEditBox(this.u0_max, false);
+                return;
+            }
+
             this.u0_trackBar1.Maximum = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text) * MULLER);
             this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void u0_max_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.u0_max, true))
+            if (_CheckEditBoxOnNumbersOnly(this.u0_max, false))
             {
                 MessageBox.Show("Пустое поле u0_max-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.u0_max, false);
@@ -336,14 +383,30 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            this.r0_trackBar2.Maximum = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text) * MULLER);
+            var value = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
+                _ChangeColorEditBox(this.r0_max, false);
+                return;
+            }
+
+            this.r0_trackBar2.Maximum = value;
 
             this._UpdateValuesLimitsAndCompute(true);
         }
 
+        private bool _BiggerThanZero(int _v)
+        {
+            if (_v < 0)
+                return false;
+
+            return true;
+        }
+
         private void r0_max_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0_max, true))
+            if (_CheckEditBoxOnNumbersOnly(this.r0_max, false))
             {
                 MessageBox.Show("Пустое поле r0_max-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.r0_max, false);
@@ -359,12 +422,20 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            var value = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text) * MULLER);
+            if (!_BiggerThanZero(value))
+            {
+                MessageBox.Show("Данное значение должно быть больше 0");
+                _ChangeColorEditBox(this.r0_min, false);
+                return;
+            }
+
             this.r0_trackBar2.Minimum = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text) * MULLER);
         }
 
         private void r0_min_Leave(object sender, EventArgs e)
         {
-            if (_CheckEditBoxOnNumbersOnly(this.r0_min, true))
+            if (_CheckEditBoxOnNumbersOnly(this.r0_min, false))
             {
                 MessageBox.Show("Пустое поле r0_min-введите его, что бы осуществить перерасчет");
                 _ChangeColorEditBox(this.r0_min, false);
