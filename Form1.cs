@@ -6,6 +6,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Compute comp = new Compute();
+        const double MULLER = 1000.0;
 
         public Form1()
         {
@@ -33,7 +34,7 @@ namespace WindowsFormsApplication1
 
                 return;
             }
-
+            
             comp.ComputeAction(this.chart1, Convert.ToDouble(this.xlimit.Text), Convert.ToDouble(this.ylimit.Text), Convert.ToDouble(this.dVal.Text), Convert.ToDouble(this.hVal.Text),
             Convert.ToDouble(this.r0.Text), Convert.ToDouble(this.u0.Text),
             Convert.ToDouble(this.b.Text), Convert.ToDouble(this.a.Text),
@@ -44,6 +45,7 @@ namespace WindowsFormsApplication1
         {
             if (_CheckEditBoxOnNumbersOnly(this.r0))
             {
+                //MessageBox.Show("Не прошли проверку r0_TextChanged");
                 return;
             }
 
@@ -123,23 +125,22 @@ namespace WindowsFormsApplication1
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {
+            u0.Text = (this.trackBar1.Value / MULLER).ToString();
             this._UpdateValuesLimitsAndCompute(true);
         }
 
         private void _UpdateLimits()
         {
-            this.trackBar1.Minimum = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text));
-            this.trackBar1.Maximum = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text));
+            this.trackBar1.Minimum = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
+            this.trackBar1.Maximum = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text) * MULLER);
 
-            this.trackBar2.Minimum = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text));
-            this.trackBar2.Maximum = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text));
+            this.trackBar2.Minimum = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text) * MULLER);
+            this.trackBar2.Maximum = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text) * MULLER);
         }
 
         private void _UpdateValues()
         {
             this._UpdateLimits();
-            u0.Text = this.trackBar1.Value.ToString();
-            r0.Text = this.trackBar2.Value.ToString();
         }
 
         private void _UpdateValuesAndCompute(bool _showMessage)
@@ -225,6 +226,8 @@ namespace WindowsFormsApplication1
 
         private void trackBar2_ValueChanged(object sender, EventArgs e)
         {
+            r0.Text = (this.trackBar2.Value / MULLER).ToString();
+
             this._UpdateValuesLimitsAndCompute(true);
         }
 
@@ -236,6 +239,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            this.trackBar1.Minimum = Convert.ToInt32(Convert.ToDouble(this.u0_min.Text) * MULLER);
             this._UpdateValuesLimitsAndCompute(true);
         }
 
@@ -257,6 +261,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            this.trackBar1.Maximum = Convert.ToInt32(Convert.ToDouble(this.u0_max.Text) * MULLER);
             this._UpdateValuesLimitsAndCompute(true);
         }
 
@@ -277,6 +282,8 @@ namespace WindowsFormsApplication1
             {
                 return;
             }
+
+            this.trackBar2.Maximum = Convert.ToInt32(Convert.ToDouble(this.r0_max.Text) * MULLER);
 
             this._UpdateValuesLimitsAndCompute(true);
         }
@@ -299,7 +306,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            this._UpdateValuesLimitsAndCompute(true);
+            this.trackBar2.Minimum = Convert.ToInt32(Convert.ToDouble(this.r0_min.Text) * MULLER);
         }
 
         private void r0_min_Leave(object sender, EventArgs e)
