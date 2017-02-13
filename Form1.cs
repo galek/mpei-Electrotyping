@@ -100,11 +100,20 @@ namespace WindowsFormsApplication1
 
         private void ylimit_TextChanged(object sender, EventArgs e)
         {
+            // TODO: Check what time all time is >0
+            if (_CheckEditBoxOnNumbersOnly(this.ylimit))
+            {
+                return;
+            }
+
+            _ChangeColorEditBox(this.ylimit, true);
+
             this._UpdateValuesAndCompute(true);
         }
 
         private void xlimit_TextChanged(object sender, EventArgs e)
         {
+            // TODO: Check what time all time is >0
             if (_CheckEditBoxOnNumbersOnly(this.xlimit))
             {
                 return;
@@ -122,8 +131,8 @@ namespace WindowsFormsApplication1
 
         private void _UpdateValues()
         {
-            // TODO: Update 
             u0.Text = this.trackBar1.Value.ToString();
+            r0.Text = this.trackBar2.Value.ToString();
         }
 
         private void _UpdateValuesAndCompute(bool _showMessage)
@@ -204,6 +213,11 @@ namespace WindowsFormsApplication1
                 _ChangeColorEditBox(this.ylimit, false);
                 return;
             }
+        }
+
+        private void trackBar2_ValueChanged(object sender, EventArgs e)
+        {
+            this._UpdateValuesAndCompute(true);
         }
     }
 }
